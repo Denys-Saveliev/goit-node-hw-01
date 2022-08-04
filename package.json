@@ -1,0 +1,29 @@
+{
+  "name": "goit-node-hw-01-CLI-App",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Denys-Saveliev/goit-node-hw-01-CLI-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Denys-Saveliev/goit-node-hw-01-CLI-App/issues"
+  },
+  "homepage": "https://github.com/Denys-Saveliev/goit-node-hw-01-CLI-App#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "commander": "^9.4.0",
+    "uniqid": "^5.4.0"
+  }
+}
