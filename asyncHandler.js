@@ -1,4 +1,4 @@
-async function tryCatchHandler(promise) {
+async function asyncHandler(promise) {
   try {
     let data = await promise;
     return data;
@@ -7,4 +7,4 @@ async function tryCatchHandler(promise) {
   }
 }
 
-module.exports = tryCatchHandler;
+module.exports = asyncHandler;

@@ -1,17 +1,17 @@
 const fs = require("fs/promises");
-const tryCatchHandler = require("./tryCatchHandler");
+const asyncHandler = require("./asyncHandler");
 const { resolve } = require("path");
 const uniqid = require("uniqid");
 
 const contactsPath = resolve("./db/contacts.json");
 
 async function listContacts() {
-  const contacts = await tryCatchHandler(fs.readFile(contactsPath));
+  const contacts = await asyncHandler(fs.readFile(contactsPath));
   return JSON.parse(contacts);
 }
 
 async function getContactById(contactId) {
-  const contacts = await tryCatchHandler(listContacts());
+  const contacts = await asyncHandler(listContacts());
   const contact = contacts.find(({ id }) => id === contactId);
   return !contact
     ? console.log(`Contact with id: ${contactId} is absent!`)
@@ -19,21 +19,19 @@ async function getContactById(contactId) {
 }
 
 async function removeContact(contactId) {
-  const contacts = await tryCatchHandler(listContacts());
+  const contacts = await asyncHandler(listContacts());
   const newContacts = contacts.filter(({ id }) => id !== contactId);
 
-  await tryCatchHandler(
-    fs.writeFile(contactsPath, JSON.stringify(newContacts))
-  );
+  await asyncHandler(fs.writeFile(contactsPath, JSON.stringify(newContacts)));
   console.log(`Contact with id: ${contactId} was removed from contact list`);
 }
 
 async function addContact(name, email, phone) {
-  const contacts = await tryCatchHandler(listContacts());
+  const contacts = await asyncHandler(listContacts());
   const newContact = { id: uniqid(), name, email, phone };
   const newListContacts = [...contacts, newContact];
 
-  await tryCatchHandler(
+  await asyncHandler(
     fs.writeFile(contactsPath, JSON.stringify(newListContacts))
   );
   console.log(`${name} was added to contact list`);
