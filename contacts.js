@@ -32,7 +32,7 @@ async function addContact(name, email, phone) {
   const newListContacts = [...contacts, newContact];
 
   await asyncHandler(
-    fs.writeFile(contactsPath, JSON.stringify(newListContacts))
+    fs.writeFile(contactsPath, JSON.stringify(newListContacts, null, 2))
   );
   console.log(`${name} was added to contact list`);
 }
